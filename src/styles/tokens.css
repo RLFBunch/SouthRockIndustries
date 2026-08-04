@@ -1,0 +1,56 @@
+/*
+  Placeholder design tokens — NOT real brand colors/fonts.
+  Replace every value below once real branding (logo, colors, fonts) is supplied.
+  Structured the same way as the Feighner site's tokens.css so real values can
+  drop in without restructuring anything.
+*/
+:root {
+  /* TODO: replace with the real brand palette */
+  --primary: #2563eb;       /* placeholder accent */
+  --action: #0f172a;        /* placeholder secondary/base */
+  --shade: #000000;
+  --white: #ffffff;
+  --neutral-light: #d9d9d9;
+  --neutral-dark: #404040;
+
+  /* TODO: replace with the real brand font */
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --content-width: 1200px;
+  --container-pad: clamp(1.6rem, 4vw, 4rem);
+
+  --radius: 1rem;
+  --radius-s: 0.67rem;
+  --radius-l: 1.5rem;
+  --radius-xl: 2rem;
+
+  --space-xs: 1.3rem;
+  --space-s: 1.8rem;
+  --space-m: 2.4rem;
+  --space-l: 3.2rem;
+  --space-xl: 4.5rem;
+  --space-xxl: 6rem;
+
+  --text-xs: 1.4rem;
+  --text-s: 1.5rem;
+  --text-m: 1.8rem;
+  --text-l: 2.2rem;
+  --text-xl: 2.8rem;
+
+  --transition: 0.2s ease-in-out;
+}
+
+html { font-size: 62.5%; }   /* 1rem = 10px, same convention as the Feighner build */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-m);
+  color: var(--shade);
+  margin: 0;
+}
+
+.container {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}

@@ -1,0 +1,21 @@
+{
+  // Cloudflare Workers + Static Assets config.
+  // Build the site first (`npm run build` → ./dist), then `wrangler deploy` bundles
+  // worker/index.ts and uploads ./dist as the static assets.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // TODO: rename to the real project/business name before first deploy.
+  "name": "south-rock-ind-site",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // run the Worker (not the asset router) for the form endpoint(s), so POSTs aren't
+    // intercepted by the trailing-slash redirect; everything else is served as a static asset.
+    "run_worker_first": ["/api/*"]
+  }
+  // No `vars` yet — nothing here is real. Add non-secret config (e.g. QUOTE_RECIPIENT)
+  // once the owner supplies it. SECRETS are never stored here — set them with:
+  //   wrangler secret put RESEND_API_KEY
+  // For local `wrangler dev`, put secrets in .dev.vars (gitignored, never commit).
+}
