@@ -1,0 +1,28 @@
+---
+// Cloudflare Turnstile widget (free, privacy-friendly CAPTCHA alternative).
+//
+// Reads the PUBLIC site key from PUBLIC_TURNSTILE_SITE_KEY (build-time env).
+// If the key is unset (e.g. local dev before the owner configures it), this
+// renders nothing and the form still works behind the honeypot — and the
+// server only ENFORCES Turnstile when TURNSTILE_SECRET_KEY is also set. So the
+// widget + verification light up together once both keys exist in Cloudflare.
+//
+// On render, Turnstile injects a hidden <input name="cf-turnstile-response">
+// into the surrounding <form>; that token is what the Pages Function verifies.
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+---
+{siteKey && (
+  <div class="turnstile">
+    <div class="cf-turnstile" data-sitekey={siteKey} data-theme="light"></div>
+    <script
+      is:inline
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
+  </div>
+)}
+
+<style>
+  .turnstile { margin-block: var(--space-s); }
+</style>

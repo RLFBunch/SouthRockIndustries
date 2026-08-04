@@ -1,0 +1,44 @@
+---
+const year = 2026;
+---
+<footer class="footer">
+  <div class="container footer__widgets">
+    <p class="footer__tagline">Patterned plastic decking engineered by marine manufacturers.<br />Perry, MI 48872.</p>
+    <div class="footer__contact">
+      <a href="/">southrockind.com</a>
+      <p>7829 Lansing Road &middot; Perry, MI 48872</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <span>&copy; {year} South Rock Industries</span>
+      <a href="/accessibility-statement/">Accessibility Statement</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--navy); color: var(--white); }
+  .footer__widgets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-m);
+    padding-block: var(--space-l);
+  }
+  .footer__tagline { max-width: 40ch; margin: 0; color: var(--white); opacity: 0.9; }
+  .footer__contact a { color: var(--orange); font-weight: 700; text-decoration: none; }
+  .footer__contact p { margin: 0.4rem 0 0; }
+
+  .footer__bottom { border-top: 1px solid rgba(255, 255, 255, 0.15); }
+  .footer__bottom-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: var(--space-s);
+    font-size: var(--text-s);
+  }
+  .footer__bottom a { color: var(--white); opacity: 0.8; }
+  .footer__bottom a:hover { opacity: 1; }
+</style>

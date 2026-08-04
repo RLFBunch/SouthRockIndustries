@@ -1,0 +1,249 @@
+---
+import Base from '../layouts/Base.astro';
+
+const miniBadges = [
+  { title: 'Simple layout', text: 'Built around clean, repeatable panel placement' },
+  { title: 'Drainage first', text: 'Open pattern allows water to move through the surface' },
+  { title: 'Field ready', text: 'Designed for real use, not fussy installs' },
+];
+
+const overviewSteps = ['PLAN FRAMING AND LAYOUT', 'SET PANELS CLEAN AND SQUARE', 'FASTEN WITH CONSISTENCY', 'FINISH AND INSPECT THE RUN'];
+
+const installSequence = [
+  { title: 'Prep the structure', text: 'Start with sound framing, correct spacing, and a layout that supports a straight run. If the base is sloppy, the surface will show it fast.' },
+  { title: 'Establish panel direction', text: 'Set a reference line and keep the panel pattern running consistently. The install should look deliberate, not pieced together as it goes.' },
+  { title: 'Fasten cleanly and consistently', text: 'Use the recommended fastening pattern and keep alignment tight. Even spacing and clean attachment matter for both appearance and long term performance.' },
+  { title: 'Inspect, trim, and finish', text: 'Check the full run for consistency, transitions, and edge conditions. The final install should drain well, walk clean, and look finished from every angle.' },
+];
+
+const panelDoing = ['Open geometry supports drainage', 'Surface pattern helps maintain footing', 'Designed for repeated exposure to real outdoor conditions'];
+const installerNeeds = ['Keep framing true and stable', 'Use consistent panel orientation', 'Watch edges, terminations, and sightlines'];
+
+const installLogic = [
+  { title: 'Frame it right', text: 'Start with a base that is straight, stable, and ready to receive a finished walking surface.' },
+  { title: 'Lay out the run', text: 'Use a clean reference and keep the pattern direction consistent across the installation.' },
+  { title: 'Fasten with discipline', text: 'Keep attachment spacing even so the finished surface reads clean and intentional.' },
+  { title: 'Finish the details', text: 'Trim, inspect, and review edge conditions before calling the job done.' },
+];
+
+const installedViews = [
+  { label: 'INSTALLED SURFACE', img: '/images/SR-_0004_SouthRock5.webp' },
+  { label: 'PATTERN DETAIL', img: '/images/SR-_0002_SouthRock3.webp' },
+  { label: 'EDGE AND FASTENER ZONE', img: '/images/SR-_0007_SouthRock8.webp' },
+];
+---
+<Base title="Installation | South Rock Industries Decking Systems" description="How South Rock decking panels install: framing, layout, fastening, and finishing.">
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">INSTALLATION</p>
+      <h1 class="hero__title">How the panels work, and how to install them.</h1>
+      <p class="hero__lede">
+        South Rock panels were built to solve real world drainage, grip, and durability problems.
+        The installation approach should be just as practical, clean, and repeatable.
+      </p>
+      <div class="hero__ctas">
+        <a class="btn" href="/#contact">Request Sample</a>
+        <a class="btn btn--outline" href="#install-sequence">Jump to Installation Steps</a>
+      </div>
+      <div class="badges">
+        {miniBadges.map((b) => (
+          <div class="badge"><h3>{b.title}</h3><p>{b.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">Installation Overview</p>
+      <h2 class="section__heading">How it works</h2>
+      <p class="section__lede">
+        South Rock panels create a finished walking surface built around drainage, grip, and long
+        term outdoor performance. Installation should support that logic, stable framing, clean
+        spacing, and a straightforward fastening approach.
+      </p>
+      <ol class="overview-steps">
+        {overviewSteps.map((s, i) => (
+          <li><span>{String(i + 1).padStart(2, '0')}</span><p>{s}</p></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--navy" id="install-sequence">
+    <div class="container">
+      <p class="eyebrow">INSTALL SEQUENCE</p>
+      <h2 class="section__heading section__heading--white">A practical process from substrate to finished surface.</h2>
+      <p class="section__lede section__lede--light">
+        The point of this page is not to make installation look mysterious. It should explain the
+        logic clearly, what the panel is doing, what the framing needs to do, and what a clean
+        finished run looks like when the work is done right.
+      </p>
+      <ol class="steps steps--light">
+        {installSequence.map((s, i) => (
+          <li><span class="steps__num">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section installer-mindset">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">INSTALLER MINDSET</p>
+      <p class="section__lede">
+        The cleanest installations usually come from getting the substrate right first, laying
+        out the run before fastening, and treating the finished surface like a visible product,
+        not just a utility deck.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">WHAT THE PANEL IS DOING</p>
+      <h2 class="section__heading">Built around drainage, grip, and long term outdoor use.</h2>
+      <p class="section__lede">
+        South Rock is not just a flat surface with a pattern on it. The pattern is part of the
+        product logic, moving water through the panel, maintaining footing, and supporting a
+        finished look that still works hard in the field.
+      </p>
+      <ul class="list">
+        {panelDoing.map((p) => <li>{p}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="container">
+      <p class="eyebrow">WHAT THE INSTALLER NEEDS TO DO</p>
+      <h2 class="section__heading section__heading--white">Support the panel with straight framing and a repeatable fastening approach.</h2>
+      <p class="section__lede section__lede--light">
+        The best looking installs usually come down to ordinary things done cleanly, square
+        framing, consistent fastening, thoughtful panel layout, and attention to transitions and
+        edges.
+      </p>
+      <ul class="list list--light">
+        {installerNeeds.map((p) => <li>{p}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">PANEL INSTALL LOGIC</p>
+      <ol class="steps">
+        {installLogic.map((s, i) => (
+          <li><span class="steps__num">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="container">
+      <p class="eyebrow">WHAT THIS PAGE CAN BECOME</p>
+      <h2 class="section__heading section__heading--white">A strong mix of visual guidance and field credibility.</h2>
+      <p class="section__lede section__lede--light">
+        Once South Rock has final install guidance, this section could hold actual diagrams,
+        fastener callouts, framing notes, edge treatment examples, or downloadable installation
+        PDFs. Right now it gives the page the right structure and hierarchy without pretending the
+        final technical details are already locked.
+      </p>
+      <div class="callouts">
+        <div class="callout">
+          <h3>Good spot for a downloadable guide</h3>
+          <p>Add a branded installation PDF, spec sheet, or quick reference sheet here once the technical material is finalized.</p>
+        </div>
+        <div class="callout">
+          <h3>Good spot for framing notes</h3>
+          <p>This can later hold framing spacing guidance, recommended fastening notes, and edge or transition treatment details.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">INSTALLED VIEW</p>
+      <h2 class="section__heading">Show the product the way installers and buyers actually look at it.</h2>
+      <div class="gallery">
+        {installedViews.map((v) => (
+          <figure>
+            <img src={v.img} alt={v.label} />
+            <figcaption>{v.label}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy next-step">
+    <div class="container next-step__inner">
+      <div>
+        <h2 class="section__heading section__heading--white">Need samples, specs, or installation guidance?</h2>
+        <p class="section__lede section__lede--light">
+          Use this page as the overview, then direct contractors, buyers, and distributors toward
+          the right next step, sample requests, technical questions, or a downloadable guide.
+        </p>
+      </div>
+      <div class="hero__ctas">
+        <a class="btn" href="/#contact">Request Sample</a>
+        <a class="btn btn--outline" href="/contact/">Contact South Rock</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { background: var(--navy); color: var(--white); padding-block: var(--space-xl); }
+  .eyebrow { color: var(--orange); font-weight: 700; margin: 0 0 0.8rem; }
+  .eyebrow--dark { color: var(--orange); }
+  .hero__title { font-size: clamp(2.6rem, 4.6vw, 4.6rem); max-width: 24ch; }
+  .hero__lede { max-width: 65ch; opacity: 0.9; margin-top: var(--space-m); }
+  .hero__ctas { display: flex; gap: var(--space-s); flex-wrap: wrap; margin-top: var(--space-l); }
+  .btn--outline { background: transparent; border: 2px solid currentColor; }
+
+  .badges { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: var(--space-m); margin-top: var(--space-xl); }
+  .badge h3 { color: var(--orange); font-size: var(--text-l); margin: 0 0 0.4rem; }
+  .badge p { margin: 0; opacity: 0.85; }
+
+  .section { padding-block: var(--space-xl); }
+  .section--navy { background: var(--navy); color: var(--white); }
+  .section__heading { font-size: clamp(2.2rem, 3.6vw, 3.2rem); margin-bottom: var(--space-m); }
+  .section__heading--white { color: var(--white); }
+  .section__lede { max-width: 80ch; opacity: 0.85; }
+  .section__lede--light { color: var(--white); opacity: 0.85; }
+
+  .overview-steps { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: var(--space-m); }
+  .overview-steps li { display: flex; gap: var(--space-s); align-items: baseline; }
+  .overview-steps span { font-family: var(--font-heading); font-weight: 900; color: var(--orange); }
+  .overview-steps p { margin: 0; font-weight: 700; color: var(--navy); }
+
+  .installer-mindset .section__lede { font-style: italic; max-width: 70ch; }
+
+  .list { padding-left: 2rem; display: grid; gap: 0.6rem; max-width: 70ch; margin-top: var(--space-m); }
+  .list--light { color: var(--white); opacity: 0.9; }
+
+  .steps { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: grid; gap: var(--space-m); }
+  .steps li { display: flex; gap: var(--space-m); align-items: flex-start; }
+  .steps__num {
+    flex: none; width: 3.6rem; height: 3.6rem;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--orange); color: var(--white);
+    border-radius: 50%; font-weight: 700;
+  }
+  .steps h3 { margin: 0 0 0.4rem; color: var(--navy); }
+  .steps--light h3 { color: var(--white); }
+  .steps p { margin: 0; opacity: 0.85; max-width: 70ch; }
+  .steps--light p { color: var(--white); }
+
+  .callouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr)); gap: var(--space-m); margin-top: var(--space-l); }
+  .callout { border: 1px dashed rgba(255, 255, 255, 0.4); border-radius: var(--radius); padding: var(--space-m); }
+  .callout h3 { margin: 0 0 0.6rem; }
+  .callout p { margin: 0; opacity: 0.85; }
+
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); gap: var(--space-m); margin-top: var(--space-l); }
+  .gallery figure { margin: 0; }
+  .gallery img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+  .gallery figcaption { margin-top: 0.6rem; font-weight: 700; color: var(--navy); font-size: var(--text-s); }
+</style>

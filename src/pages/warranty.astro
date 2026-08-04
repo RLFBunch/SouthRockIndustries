@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+
+const covers = [
+  { title: 'Structural Integrity', text: 'The Product will not splinter, crack, split, or suffer structural failure under normal use and load conditions as specified in the installation guidelines.' },
+  { title: 'Environmentally Friendly', text: 'The product is designed to be environmentally friendly, allowing light to pass through to help protect wildlife and vegetation beneath the surface, while also supporting drainage, reducing trapped moisture, and maintaining long term outdoor performance under normal use.' },
+  { title: 'Mold & Mildew Resistance', text: 'The Product will resist mold and mildew growth on the surface under normal conditions. Does not cover growth resulting from improper installation or inadequate drainage.' },
+];
+
+const exclusions = [
+  'Damage from improper installation, including failure to follow South Rock’s published installation guidelines.',
+  'Damage caused by accidents, misuse, abuse, negligence, or acts of God (hurricanes, tornadoes, floods, or earthquakes).',
+  'Damage from chemical exposure, including use of harsh cleaning agents not approved by South Rock.',
+  'Normal weathering, including color variations from natural UV exposure beyond the stated fading thresholds.',
+  'Damage from inadequate or improper maintenance.',
+  'Products that have been modified, cut improperly, or used in applications other than their intended purpose.',
+  'Cosmetic blemishes or damage that does not affect the structural integrity of the product.',
+  'Boards installed in direct ground contact or submerged in standing water.',
+  'Incidental or consequential damages, including labor costs for removal and reinstallation, property damage, or loss of use.',
+];
+
+const claimSteps = [
+  { title: 'Contact South Rock', text: 'Reach us at www.southrockind.com or in writing at 7829 Lansing Road, Perry, MI 48872 within the warranty period. South Rock will acknowledge receipt within 15 business days and advise on next steps.' },
+  { title: 'Provide Proof Of Purchase', text: 'Submit the original sales receipt or invoice showing the purchase date.' },
+  { title: 'Document The Defect', text: 'Provide a written description of the defect, photographs of the affected area, and the product lot number (located on the product label or packaging).' },
+  { title: 'Allow Inspection', text: 'Allow South Rock a reasonable opportunity to inspect the Product, either in person or via submitted photographs and documentation.' },
+];
+
+const terms = [
+  'This warranty is governed by the laws of the State of Michigan.',
+  'South Rock reserves the right to inspect any Product before authorizing a warranty claim.',
+  'This warranty constitutes the entire warranty agreement between South Rock and the purchaser and supersedes all prior representations or agreements regarding the Product.',
+  'South Rock reserves the right to amend this warranty at any time for products purchased after the date of amendment. Products purchased prior to any amendment will remain covered under the warranty terms in effect at the time of purchase.',
+];
+---
+<Base title="Warranty | South Rock Industries Decking Systems" description="South Rock Industries' 10-year limited warranty on plastic dock decking.">
+  <section class="hero hero--sm">
+    <div class="container">
+      <p class="eyebrow">Limited Warranty</p>
+      <h1 class="hero__title">10 Year Protection.<br /><span class="line--muted">You can count on</span></h1>
+      <p class="hero__lede">
+        South Rock Industries warrants its plastic decking product to be free from defects in
+        material and workmanship for a period of ten (10) years from the date of original purchase.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">WARRANTY COVERAGE</p>
+      <h2 class="section__heading">What this warranty covers</h2>
+      <div class="cards cards--3">
+        {covers.map((c) => (
+          <div class="card"><h3>{c.title}</h3><p>{c.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="container">
+      <p class="eyebrow">ELIGIBILITY</p>
+      <h2 class="section__heading section__heading--white">Who is covered</h2>
+      <p class="section__lede section__lede--light">
+        This warranty is extended solely to the original purchaser of the Product and is
+        nontransferable. Proof of purchase (sales receipt or invoice) is required to make a
+        warranty claim.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">EXCLUSIONS</p>
+      <h2 class="section__heading">What is not covered</h2>
+      <ul class="list">
+        {exclusions.map((e) => <li>{e}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="container">
+      <p class="eyebrow">RESOLUTION</p>
+      <h2 class="section__heading section__heading--white">Remedies</h2>
+      <p class="section__lede section__lede--light">South Rock’s sole obligation under this warranty is, at its sole discretion, to:</p>
+      <ol class="list list--numbered">
+        <li>Repair the defective Product.</li>
+        <li>Replace the defective Product with the same or a comparable product.</li>
+        <li>The customer’s cost is calculated by using the current MSRP and multiplying it by the percentage of the warranty period still in effect.</li>
+      </ol>
+      <p class="section__lede section__lede--light">
+        South Rock reserves the right to discontinue or change product lines. If the original
+        Product is discontinued, South Rock will supply the closest available equivalent product
+        or issue a pro-rated credit.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">SUBMIT A CLAIM</p>
+      <h2 class="section__heading">How to make a warranty claim</h2>
+      <ol class="steps">
+        {claimSteps.map((s, i) => (
+          <li><span class="steps__num">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="container">
+      <h2 class="section__heading section__heading--white">Disclaimer of implied warranties</h2>
+      <p class="section__lede section__lede--light disclaimer">
+        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SOUTH ROCK DISCLAIMS ALL IMPLIED
+        WARRANTIES, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+        PARTICULAR PURPOSE. SOUTH ROCK’S LIABILITY UNDER THIS WARRANTY SHALL NOT EXCEED THE
+        ORIGINAL PURCHASE PRICE OF THE DEFECTIVE PRODUCT. IN NO EVENT SHALL SOUTH ROCK BE LIABLE
+        FOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES.
+      </p>
+      <p class="section__lede section__lede--light">
+        Some states do not allow limitations on implied warranties or exclusions of incidental or
+        consequential damages, so the above limitations may not apply to you. This warranty gives
+        you specific legal rights, and you may also have other rights which vary by state.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">TERMS</p>
+      <h2 class="section__heading">General conditions</h2>
+      <ul class="list">
+        {terms.map((t) => <li>{t}</li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { background: var(--navy); color: var(--white); padding-block: var(--space-xl); }
+  .hero--sm { padding-block: var(--space-l); }
+  .eyebrow { color: var(--orange); font-weight: 700; margin: 0 0 0.8rem; }
+  .eyebrow--dark { color: var(--orange); }
+  .hero__title { font-size: clamp(3rem, 5vw, 5.4rem); }
+  .line--muted { color: var(--muted); font-weight: 300; }
+  .hero__lede { max-width: 60ch; opacity: 0.9; margin-top: var(--space-m); }
+
+  .section { padding-block: var(--space-xl); }
+  .section--navy { background: var(--navy); color: var(--white); }
+  .section__heading { font-size: clamp(2.2rem, 3.6vw, 3.2rem); margin-bottom: var(--space-m); }
+  .section__heading--white { color: var(--white); }
+  .section__lede { max-width: 80ch; opacity: 0.85; }
+  .section__lede--light { color: var(--white); opacity: 0.85; }
+  .disclaimer { font-weight: 700; text-transform: uppercase; font-size: var(--text-s); }
+
+  .cards { display: grid; gap: var(--space-m); margin-top: var(--space-l); }
+  .cards--3 { grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); }
+  .card { border: 1px solid #e2e8f0; border-radius: var(--radius); padding: var(--space-m); }
+  .card h3 { font-size: var(--text-l); margin-bottom: 0.6rem; color: var(--navy); }
+  .card p { margin: 0; opacity: 0.85; }
+
+  .list { max-width: 80ch; padding-left: 2rem; display: grid; gap: 0.8rem; }
+  .list--numbered { list-style: decimal; }
+
+  .steps { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: grid; gap: var(--space-m); }
+  .steps li { display: flex; gap: var(--space-m); align-items: flex-start; }
+  .steps__num {
+    flex: none;
+    width: 3.6rem; height: 3.6rem;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--orange); color: var(--white);
+    border-radius: 50%; font-weight: 700;
+  }
+  .steps h3 { margin: 0 0 0.4rem; color: var(--navy); }
+  .steps p { margin: 0; opacity: 0.85; max-width: 70ch; }
+</style>

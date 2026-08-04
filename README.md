@@ -1,44 +1,45 @@
-# South Rock Ind. — site scaffold
+# South Rock Industries — static rebuild of southrockind.com
 
-Domain: **southrockind.com**. This is a fresh, **separate** repo/project — separate GitHub
-repo, separate Cloudflare Pages/Workers project, separate domain, separate secrets from the
-Feighner Boat Lifts & Docks site, per the owner's request that it stand on its own even
-though the business is Feighner-owned. It reuses the same proven stack (Astro static site +
-Cloudflare Worker + Pages-style Functions for forms) because that setup worked well on the
-Feighner rebuild.
+Domain: **southrockind.com**. This is a **1:1 copy** of the live WordPress site
+(Kadence theme + Gravity Forms + Cloudflare Turnstile), rebuilt as a static Astro site so
+it can be moved to Cloudflare hosting — same pattern as the Feighner Boat Lifts & Docks
+rebuild, but a fully **separate** repo/project (separate GitHub repo, separate Cloudflare
+Pages/Workers project, separate domain, separate secrets), per the owner's request that it
+stand on its own even though the business is Feighner-owned.
 
-**Confirmed:** "South Rock" is the maintenance-free decking material also listed on the
-Feighner site's dock pages (Beige/Grey options) — this is that same real product line/brand,
-owned by Feighner, getting its own standalone site. Not an unrelated coincidence.
+**No content or design changes were made** — all 6 live pages were crawled and copied
+verbatim (text, nav, footer, colors read from computed CSS, and the real product photos/logo
+downloaded from the live site). The goal right now is a hosting swap, not a redesign.
 
-## Status: bare scaffold, not a real site yet
-Nothing in here is real content yet. Open questions before this becomes a real site:
+## What's copied
+- **Pages (6, matching the live sitemap exactly):** `/` (home), `/warranty/`, `/about/`,
+  `/installation/`, `/contact/`, `/accessibility-statement/`.
+- **Design tokens** (`src/styles/tokens.css`) — read from the live site's computed styles:
+  navy `#1a4d6e`, orange `#f26824`, muted blue-gray `#7694a8`, Inter 900/300 for headings,
+  system font stack for body text, `3px` button radius.
+- **Assets** (`public/images/`) — the real logo and product photos downloaded from
+  `wp-content/uploads/`.
+- **Contact form** — same fields as the live Gravity Forms form (First/Last name, Email +
+  Confirm Email, Comments up to 600 chars, submit label "Submit"), posting to a Cloudflare
+  Function (`functions/api/contact.ts`) with a honeypot + optional Turnstile verification,
+  matching the pattern already proven on the Feighner site.
+- **Nav/footer** — Home / Warranty / About + orange "Request Sample" button (links to
+  `/#contact`), footer tagline + Perry, MI address + copyright. The live footer's "Website
+  Design & SEO Services by Pixelvine Creative" credit line was dropped (same call already
+  made on the Feighner rebuild for its old vendor credit) — nothing else was changed.
 
-1. **Branding** — same visual identity as Feighner (blue `#005288` / orange `#f4661d`,
-   Outfit font — see the main repo's `docs/DESIGN-TOKENS.md`) since it's owned by the same
-   company, or a distinct look for the South Rock brand? `src/styles/tokens.css` currently
-   has generic placeholder colors/fonts either way.
-2. **What the site should cover** — is this a small brand/marketing site for the decking
-   material (specs, color options, "used by Feighner docks"), or does South Rock Ind. sell/
-   ship decking directly or wholesale to other dock manufacturers too? Determines whether
-   this needs a product catalog, dealer/wholesale inquiry form, etc., or just a few pages.
-3. **Contact/location** — same Charlotte/Perry/Gwinn locations and phone as Feighner, or
-   separate contact info for South Rock Ind.?
-4. **Forms** — recipient email + fields once the above is settled; nothing wired up yet
-   (`worker/index.ts` has no routes registered).
-
-## Structure
-Mirrors the Feighner repo's layout so it's a familiar starting point:
-```
-src/
-  layouts/Base.astro     — bare HTML shell, no header/footer/nav yet
-  pages/index.astro      — placeholder homepage
-  styles/tokens.css      — PLACEHOLDER design tokens, not real branding
-  components/, data/      — empty, ready for real content
-functions/api/            — empty, ready for form handlers
-worker/index.ts           — Cloudflare Worker entry, no routes registered yet
-wrangler.jsonc            — Cloudflare config, placeholder project name
-```
+## Known gaps vs. the live site (worth a second pass before cutover)
+- The live site is WordPress/Kadence with Kadence Blocks Pro (Splide galleries, PhotoSwipe
+  lightbox assets loaded). This rebuild has no image lightbox/gallery interaction — only
+  static images. Check whether the live site actually uses one anywhere before shipping.
+- Exact mobile breakpoint and mobile menu behavior weren't measured pixel-for-pixel from the
+  live Kadence theme — a reasonable default (768px, simple overlay) was used instead.
+- The homepage hero photo may not be the exact same crop as the live site's (it was likely a
+  CSS background-image, not an `<img>`, so it wasn't in the asset list this was built from) —
+  worth a side-by-side check.
+- `/installation/` page: the live site's own copy admits this page is provisional
+  ("What This Page Can Become" section) — copied verbatim, not fixed, per the "just copy it"
+  instruction. Revisit once real installation content/photos exist.
 
 ## Running locally
 ```bash
@@ -46,7 +47,21 @@ npm install
 npm run dev
 ```
 
-## Deploying (once real content + domain are in place)
-Same pattern as the Feighner site: `npm run build` then `wrangler deploy` (or connect the
-repo to Cloudflare Pages/Workers Builds). Set secrets with `wrangler secret put NAME` —
-never commit real API keys or recipient emails into `wrangler.jsonc`.
+## Deploying (once the owner is ready to cut over)
+Same pattern as the Feighner site — `npm run build` then `wrangler deploy`, or connect the
+repo to Cloudflare Pages/Workers Builds.
+
+**Environment variables needed** (Worker → Settings → Variables and Secrets), none are set yet:
+- `RESEND_API_KEY` (secret) — required for the contact form to send email.
+- `CONTACT_RECIPIENT` (var) — where contact form messages should go.
+- `CONTACT_SENDER` (var, optional) — defaults to `onboarding@resend.dev`.
+- `TURNSTILE_SECRET_KEY` (secret, optional) + `PUBLIC_TURNSTILE_SITE_KEY` (build-time var,
+  optional) — pair these to enable the Turnstile widget; without them the form still works
+  behind the honeypot alone.
+
+Never commit real keys into `wrangler.jsonc` — set them with `wrangler secret put NAME`.
+
+## Domain cutover (owner performs, same as the Feighner rebuild)
+This repo does not touch DNS or any Cloudflare account. Once verified on the `*.pages.dev` /
+`*.workers.dev` preview URL, the owner points `southrockind.com` at Cloudflare and the old
+WordPress host can be retired.

@@ -1,13 +1,223 @@
 ---
 import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FormEnhancer from '../components/FormEnhancer.astro';
+
+const stats = [
+  { big: '10yr', label: 'LIMITED WARRANTY' },
+  { big: '100%', label: 'PLASTIC — NO ROT' },
+  { big: '6+', label: 'INDUSTRIES SERVED' },
+  { big: 'Perry, MI', label: 'MADE IN MICHIGAN' },
+];
+
+const features = [
+  { title: 'Lattice Geometry', text: 'Proprietary pattern distributes load, channels water instantly, and provides multi-directional grip.' },
+  { title: '10-Year Warranty', text: 'Won’t splinter, crack, or rot. Covers structure, color fade, and mold resistance. Governed by Michigan law.' },
+  { title: 'Marine-Born Design', text: 'Built by dock and boat lift manufacturers. Designed for what we actually needed, then opened to the world.' },
+  { title: 'Freshwater Proven', text: 'Freeze-thaw cycles, UV, algae, heavy equipment. Michigan lakes tested, Michigan winters survived.' },
+];
+
+const applications = [
+  { title: 'Marine & Waterfront', text: 'Dock decking, gangways, boat lift platforms. Constant moisture, UV, freeze-thaw, heavy equipment — no problem.' },
+  { title: 'Livestock & Agriculture', text: 'Barn floors, feedlot platforms, wash areas. Drains instantly, easy to sanitize, won’t rot under organic load.' },
+  { title: 'Deck Building', text: 'Residential and commercial decks that never splinter, never need staining, and outlast the structure beneath.' },
+  { title: 'Staging & Events', text: 'Stage decking with superior slip resistance. Panels install quickly.' },
+  { title: 'Outdoor Commercial', text: 'Patios, walkways, pool surrounds, ADA ramp surfaces. Code-compliant slip ratings with architectural appeal.' },
+];
 ---
-<Base title="South Rock Ind. — Coming Soon" description="Placeholder homepage — real content pending.">
-  <main class="container" style="padding-block: var(--space-xxl); text-align: center;">
-    <h1 style="font-size: var(--text-xl);">Site scaffold ready</h1>
-    <p>
-      This is a placeholder homepage. Nothing here is real content — swap in the
-      actual business name, branding, and copy before this goes live. See
-      <code>README.md</code> for the open questions blocking that.
-    </p>
-  </main>
+<Base
+  title="South Rock Industries | Dock & Marine Decking Systems"
+  description="Michigan made patterned plastic decking for docks, marinas, agriculture, and commercial applications built for weather, water, and durability and accessibility."
+>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow">Engineered for the elements</p>
+        <h1 class="hero__title">
+          <span class="line line--white">Patterned.</span>
+          <span class="line line--orange">Proven.</span>
+          <span class="line line--muted">Built to last.</span>
+        </h1>
+        <p class="hero__lede">
+          The only dock decking designed by manufacturers who use it every day. Our proprietary
+          lattice pattern drains instantly, grips in all conditions, and outlasts everything the
+          water throws at it.
+        </p>
+      </div>
+      <div class="hero__photo">
+        <img src="/images/SR-_0006_SouthRock7.webp" alt="Photograph of South Rock decking plastic product over a lake" />
+      </div>
+    </div>
+    <div class="container stats">
+      {stats.map((s) => (
+        <div class="stat">
+          <div class="stat__big">{s.big}</div>
+          <div class="stat__label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">THE PRODUCT</p>
+      <h2 class="section__heading">Where pattern meets performance</h2>
+      <p class="section__lede">
+        Every opening, every rib, every connector in our lattice geometry has a structural
+        purpose — drainage, load distribution, grip. This is not decoration.
+      </p>
+      <div class="cards cards--4">
+        {features.map((f) => (
+          <div class="card">
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="container surface__grid">
+      <div>
+        <p class="eyebrow">SURFACE DESIGN</p>
+        <h2 class="section__heading section__heading--white">The pattern is the product</h2>
+        <p class="section__lede section__lede--light">
+          The interlocking lattice isn’t cosmetic — it is the structural logic of every panel.
+          Open enough to drain, rigid enough to carry load, refined enough to belong on an
+          architectural deck.
+        </p>
+        <p class="quote">
+          “Patterned” — not grated. Not industrial mesh. SouthRock panels are engineered
+          flooring with a designed surface.
+        </p>
+      </div>
+      <div class="surface__photo">
+        <img src="/images/SR-_0005_SouthRock6.webp" alt="Photograph of plastic overlay on dock at a lake." />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">APPLICATIONS</p>
+      <h2 class="section__heading">Built for one industry.<br />Ready for all of them.</h2>
+      <p class="section__lede">
+        Engineered in the marine world. The patterned panel thrives anywhere that demands
+        durable, weather-resistant, architecturally considered flooring.
+      </p>
+      <div class="cards cards--3">
+        {applications.map((a) => (
+          <div class="card">
+            <h3>{a.title}</h3>
+            <p>{a.text}</p>
+          </div>
+        ))}
+      </div>
+      <p class="applications__cta">
+        <strong>Your industry</strong> — If you need durable, patterned outdoor flooring that
+        drains, grips, and lasts, we want to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--navy origin">
+    <div class="container origin__grid">
+      <blockquote class="origin__quote">
+        “We build docks for a living. We couldn’t find decking we were proud to install —
+        so we made our own.“
+      </blockquote>
+      <div>
+        <p class="eyebrow">OUR ORIGIN</p>
+        <p class="section__lede section__lede--light">
+          South Rock was built out of necessity—by marine manufacturers who knew exactly what
+          dock decking should be, but couldn’t find a product that met their standards. So, we
+          engineered it ourselves.
+        </p>
+        <p class="section__lede section__lede--light">
+          Based in Perry, Michigan, our team has spent nearly 40 years designing and
+          manufacturing high-quality docks. That hands-on experience shows up in every detail,
+          from performance to durability.
+        </p>
+        <p class="section__lede section__lede--light">
+          The result is a patterned plastic decking panel that delivers exactly what
+          professionals demand—exceptional performance, long-lasting reliability, and a look
+          unlike anything else on the market.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warranty-cta">
+    <div class="container warranty-cta__inner">
+      <div>
+        <h2 class="section__heading">10-Year Limited Warranty.<br />No fine print surprises.</h2>
+        <p class="section__lede">
+          Covers structural integrity, color fade, and mold resistance. Governed by Michigan law.
+        </p>
+      </div>
+      <a class="btn" href="/warranty/">READ THE FULL WARRANTY</a>
+    </div>
+  </section>
+
+  <ContactForm />
+  <FormEnhancer />
 </Base>
+
+<style>
+  .hero { background: var(--navy); color: var(--white); padding-block-start: var(--space-l); }
+  .hero__grid { display: grid; gap: var(--space-l); align-items: center; }
+  @media (min-width: 900px) { .hero__grid { grid-template-columns: 1fr 1fr; } }
+  .eyebrow { color: var(--orange); font-weight: 700; text-transform: none; margin: 0 0 0.8rem; }
+  .eyebrow--dark { color: var(--orange); }
+  .hero__title { font-size: clamp(3.6rem, 6vw, 7rem); }
+  .hero__title .line { display: block; }
+  .line--white { color: var(--white); }
+  .line--orange { color: var(--orange); }
+  .line--muted { color: var(--muted); font-weight: 300; }
+  .hero__lede { max-width: 55ch; opacity: 0.9; margin-top: var(--space-m); }
+  .hero__photo img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-m);
+    padding-block: var(--space-l);
+  }
+  @media (min-width: 700px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+  .stat__big { font-family: var(--font-heading); font-weight: 900; font-size: var(--text-l); color: var(--white); }
+  .stat__label { font-size: var(--text-s); opacity: 0.75; letter-spacing: 0.04em; }
+
+  .section { padding-block: var(--space-xl); }
+  .section--navy { background: var(--navy); color: var(--white); }
+  .section__heading { font-size: clamp(2.4rem, 4vw, 3.6rem); margin-bottom: var(--space-m); }
+  .section__heading--white { color: var(--white); }
+  .section__lede { max-width: 70ch; opacity: 0.85; }
+  .section__lede--light { color: var(--white); opacity: 0.85; }
+  .quote { font-style: italic; color: var(--muted); margin-top: var(--space-m); max-width: 55ch; }
+
+  .cards { display: grid; gap: var(--space-m); margin-top: var(--space-l); }
+  .cards--4 { grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); }
+  .cards--3 { grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); }
+  .card { border: 1px solid #e2e8f0; border-radius: var(--radius); padding: var(--space-m); }
+  .card h3 { font-size: var(--text-l); margin-bottom: 0.6rem; color: var(--navy); }
+  .card p { margin: 0; opacity: 0.85; }
+
+  .surface__grid { display: grid; gap: var(--space-l); align-items: center; }
+  @media (min-width: 900px) { .surface__grid { grid-template-columns: 1fr 1fr; } }
+  .surface__photo img { width: 100%; height: auto; border-radius: var(--radius); display: block; }
+
+  .applications__cta { margin-top: var(--space-l); font-size: var(--text-l); }
+
+  .origin__grid { display: grid; gap: var(--space-l); }
+  @media (min-width: 900px) { .origin__grid { grid-template-columns: 1fr 1fr; } }
+  .origin__quote { font-size: var(--text-l); font-style: italic; margin: 0; border-left: 4px solid var(--orange); padding-left: var(--space-m); }
+
+  .warranty-cta__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+// Matches the live site's top bar: "Made in Michigan | Family Owned" on the left,
+// phone + hours on the right (phone rendered in orange like the live site).
+---
+<div class="topbar">
+  <div class="container topbar__inner">
+    <span>Made in Michigan | Family Owned</span>
+    <span>Call Us: <a href="tel:5179143555">517-914-3555</a> | Mon-Fri 9:30am - 5pm</span>
+  </div>
+</div>
+
+<style>
+  .topbar {
+    background: var(--navy);
+    color: var(--white);
+    font-size: var(--text-s);
+  }
+  .topbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem;
+    padding-block: 1rem;
+    flex-wrap: wrap;
+  }
+  .topbar a {
+    color: var(--orange);
+    font-weight: 700;
+    text-decoration: none;
+  }
+</style>

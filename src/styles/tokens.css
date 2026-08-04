@@ -1,51 +1,57 @@
 /*
-  Placeholder design tokens — NOT real brand colors/fonts.
-  Replace every value below once real branding (logo, colors, fonts) is supplied.
-  Structured the same way as the Feighner site's tokens.css so real values can
-  drop in without restructuring anything.
+  Design tokens ported from the live southrockind.com (WordPress + Kadence theme),
+  read from computed styles — not eyeballed. Source values:
+    --navy   rgb(26, 77, 110)   — hero/section background AND default body text color
+    --orange rgb(242, 104, 36)  — accent, buttons, "Proven." highlight
+    --muted  rgb(118, 148, 168) — lighter heading text ("Built to last.")
+  Headings use "Inter Black" (900) / "Inter Light" (300) named weights; body text
+  uses the system font stack (no custom body webfont on the live site).
 */
-:root {
-  /* TODO: replace with the real brand palette */
-  --primary: #2563eb;       /* placeholder accent */
-  --action: #0f172a;        /* placeholder secondary/base */
-  --shade: #000000;
-  --white: #ffffff;
-  --neutral-light: #d9d9d9;
-  --neutral-dark: #404040;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
 
-  /* TODO: replace with the real brand font */
-  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+:root {
+  --navy: #1a4d6e;
+  --orange: #f26824;
+  --muted: #7694a8;
+  --white: #ffffff;
+
+  --font-body: -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-heading: "Inter", sans-serif;
 
   --content-width: 1200px;
   --container-pad: clamp(1.6rem, 4vw, 4rem);
 
-  --radius: 1rem;
-  --radius-s: 0.67rem;
-  --radius-l: 1.5rem;
-  --radius-xl: 2rem;
+  --radius: 3px;   /* live site's button border-radius */
 
-  --space-xs: 1.3rem;
+  --space-xs: 1.2rem;
   --space-s: 1.8rem;
   --space-m: 2.4rem;
-  --space-l: 3.2rem;
-  --space-xl: 4.5rem;
-  --space-xxl: 6rem;
+  --space-l: 3.6rem;
+  --space-xl: 5.4rem;
+  --space-xxl: 8rem;
 
-  --text-xs: 1.4rem;
   --text-s: 1.5rem;
-  --text-m: 1.8rem;
+  --text-m: 1.7rem;
   --text-l: 2.2rem;
-  --text-xl: 2.8rem;
 
   --transition: 0.2s ease-in-out;
 }
 
-html { font-size: 62.5%; }   /* 1rem = 10px, same convention as the Feighner build */
+html { font-size: 62.5%; color-scheme: light; }   /* 1rem = 10px; opt out of forced dark-mode */
 
 body {
   font-family: var(--font-body);
   font-size: var(--text-m);
-  color: var(--shade);
+  color: var(--navy);
+  background: var(--white);
+  margin: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  line-height: 1.15;
   margin: 0;
 }
 
@@ -54,3 +60,18 @@ body {
   margin-inline: auto;
   padding-inline: var(--container-pad);
 }
+
+.btn {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: var(--radius);
+  padding: 1.2rem 2.4rem;
+  border: none;
+  cursor: pointer;
+  transition: filter var(--transition);
+}
+.btn:hover { filter: brightness(1.08); }

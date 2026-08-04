@@ -1,9 +1,9 @@
 // Cloudflare Worker entry (Workers + Static Assets deployment).
 //
 // The static site is served from ./dist via the ASSETS binding. This Worker only
-// runs for /api/* (see `assets.run_worker_first` in wrangler.jsonc). No routes are
-// wired up yet — add form handlers under functions/api/ and register them below
-// once the site actually has a form to submit.
+// runs for /api/* (see `assets.run_worker_first` in wrangler.jsonc).
+
+import { onRequestPost as contact } from '../functions/api/contact';
 
 interface Env {
   ASSETS: { fetch: (req: Request) => Promise<Response> };
@@ -13,7 +13,7 @@ interface Env {
 type Handler = (ctx: { request: Request; env: Env }) => Promise<Response>;
 
 const routes: Record<string, Handler> = {
-  // '/api/contact': contact,
+  '/api/contact': contact,
 };
 
 export default {

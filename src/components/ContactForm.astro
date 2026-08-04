@@ -1,0 +1,63 @@
+---
+// Replicates the live Gravity Forms contact form: Name (First/Last), Email +
+// Confirm Email, Comments (600 char max, required). Submit label is "Submit",
+// matching the live site.
+import Turnstile from './Turnstile.astro';
+---
+<section class="section contact-sec" id="contact">
+  <div class="container">
+    <h2 class="contact__heading">Contact Us</h2>
+    <form class="cform" method="post" action="/api/contact" data-resend novalidate>
+      <label class="hp"><input type="text" name="company_url" tabindex="-1" autocomplete="off" /></label>
+
+      <fieldset class="cform__name">
+        <legend>Name <span class="req">(Required)</span></legend>
+        <label>First<input type="text" name="first_name" required /></label>
+        <label>Last<input type="text" name="last_name" required /></label>
+      </fieldset>
+
+      <label class="cform__field">Email <span class="req">(Required)</span>
+        <input type="email" name="email" placeholder="Enter Email" required />
+      </label>
+      <label class="cform__field">Confirm Email <span class="req">(Required)</span>
+        <input type="email" name="email_confirm" placeholder="Confirm Email" required />
+      </label>
+
+      <label class="cform__field">Comments <span class="req">(Required)</span>
+        <textarea name="comments" rows="5" maxlength="600" placeholder="Please let us know what's on your mind. Have a question for us? Ask away." required></textarea>
+      </label>
+
+      <Turnstile />
+
+      <div class="cform__submit">
+        <button class="btn" type="submit">Submit</button>
+      </div>
+      <p class="form-status" data-form-status role="status" hidden></p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact-sec { background: var(--white); }
+  .contact__heading { text-align: center; color: var(--navy); margin-bottom: var(--space-l); }
+  .cform { max-width: 60rem; margin-inline: auto; display: grid; gap: var(--space-s); }
+  .hp { position: absolute; left: -9999px; }
+  .cform legend, .cform__field { font-weight: 700; color: var(--navy); font-family: var(--font-body); }
+  .req { font-weight: 400; opacity: 0.7; }
+  .cform input, .cform textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0.4rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: var(--text-m);
+  }
+  .cform input:focus, .cform textarea:focus { outline: 2px solid var(--orange); border-color: var(--orange); }
+  .cform__name { border: 0; padding: 0; margin: 0; display: grid; gap: var(--space-s); }
+  @media (min-width: 600px) { .cform__name { grid-template-columns: 1fr 1fr; } .cform__name legend { grid-column: 1 / -1; } }
+  .form-status--ok { color: #15803d; }
+  .form-status--err { color: #b91c1c; }
+</style>

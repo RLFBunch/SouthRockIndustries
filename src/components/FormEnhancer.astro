@@ -1,0 +1,43 @@
+---
+// Progressive enhancement: any <form data-resend> is submitted via fetch (JSON) so
+// the page doesn't reload, with a [data-form-status] line for success/error. Without
+// JS the form still posts normally to its action (the Function handles both).
+// Honeypot field name is "company_url" (the real message field here is "comments",
+// unlike the Feighner form, so it can't double as the decoy).
+---
+<script>
+  document.querySelectorAll('form[data-resend]').forEach((form) => {
+    const f = form as HTMLFormElement;
+    const status = f.querySelector('[data-form-status]') as HTMLElement | null;
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data: Record<string, any> = {};
+      new FormData(f).forEach((v, k) => (data[k] = v));
+      if (data.company_url) return;   // honeypot
+      if (!f.reportValidity()) return;
+      if (data.email && data.email_confirm && data.email !== data.email_confirm) {
+        if (status) { status.hidden = false; status.textContent = 'Email addresses do not match.'; status.className = 'form-status form-status--err'; }
+        return;
+      }
+      const btn = f.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      const orig = btn?.textContent;
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      try {
+        const res = await fetch(f.action, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
+        const j: any = await res.json().catch(() => ({}));
+        if (status) status.hidden = false;
+        if (res.ok && j.ok) {
+          if (status) { status.textContent = 'Thanks! Your message has been sent — we’ll be in touch shortly.'; status.className = 'form-status form-status--ok'; }
+          f.reset();
+        } else if (status) {
+          status.textContent = j.error || 'Sorry — we couldn’t send that. Please call 517-914-3555.';
+          status.className = 'form-status form-status--err';
+        }
+      } catch {
+        if (status) { status.hidden = false; status.textContent = 'Network error — please try again, or call 517-914-3555.'; status.className = 'form-status form-status--err'; }
+      }
+      (window as any).turnstile?.reset();
+      if (btn) { btn.disabled = false; btn.textContent = orig || 'Submit'; }
+    });
+  });
+</script>

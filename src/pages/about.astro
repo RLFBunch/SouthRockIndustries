@@ -1,0 +1,206 @@
+---
+import Base from '../layouts/Base.astro';
+
+const badges = [
+  { title: 'Michigan Roots', text: 'Proudly based in Perry, Michigan' },
+  { title: 'Family Owned', text: 'Built with long term pride, not shortcuts' },
+  { title: 'Manufacturer Led', text: 'Designed by people who actually use it' },
+];
+
+const stats = [
+  { big: '10yr', label: 'LIMITED WARRANTY' },
+  { big: '100%', label: 'PLASTIC — NO ROT' },
+  { big: '6+', label: 'INDUSTRIES SERVED' },
+  { big: 'Perry, MI', label: 'MADE IN MICHIGAN' },
+];
+
+const whoWeAreBullets = [
+  'Built from practical marine and waterfront experience',
+  'Designed around drainage, grip, and durability',
+  'Built with a cleaner finished look in mind',
+  'Rooted in Michigan manufacturing and family ownership',
+];
+
+const drives = [
+  { title: 'Build what you trust', text: 'South Rock began with a straightforward standard. If we would not be confident installing it ourselves, it was not good enough.' },
+  { title: 'Designed for hard conditions', text: 'Water, weather, algae, daily wear, and freeze thaw cycles were not edge cases. They were the starting point.' },
+  { title: 'Practical and Elegant', text: 'The patterned surface is there for a reason. Drainage, footing, structure, and visual finish all work together when the design is done right.' },
+];
+
+const storySteps = [
+  { title: 'See the problem', text: 'Existing decking options came with compromises. Some felt too industrial, some did not finish well, and some simply were not products we wanted to stand behind.' },
+  { title: 'Design around use', text: 'Instead of chasing trends, South Rock focused on drainage, grip, structural logic, visual finish, and long term outdoor durability, where the pattern is not decoration, it is the product.' },
+  { title: 'Prove it in the field', text: 'The product earned its credibility in real installs, real weather, and the kind of environments that punish weak materials quickly.' },
+  { title: 'Grow from there', text: 'What started with marine and waterfront experience grew into a broader product story without losing the same core identity.' },
+];
+---
+<Base title="About South Rock Industries | Made in Michigan Decking" description="South Rock Industries is a Michigan-made, family-owned manufacturer of patterned plastic dock decking, built by dock and boat lift makers.">
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__title">Built by people who needed a better deck surface.</h1>
+      <p class="hero__lede">
+        South Rock did not start with a branding exercise and a blank whiteboard. It started in
+        the real world, around docks, boat lifts, weather, water, and the frustration of not
+        finding a product worth installing day after day.
+      </p>
+      <div class="hero__ctas">
+        <a class="btn" href="/#contact">Request Sample</a>
+        <a class="btn btn--outline" href="#our-story">Read Our Story</a>
+      </div>
+      <div class="badges">
+        {badges.map((b) => (
+          <div class="badge"><h3>{b.title}</h3><p>{b.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section__heading">About South Rock</h2>
+      <p class="section__lede">
+        South Rock started with a simple problem. We needed a better deck surface for real world
+        conditions, and we were not interested in settling for something that looked good on paper
+        but fell short in the field.
+      </p>
+      <div class="stats">
+        {stats.map((s) => (
+          <div class="stat"><div class="stat__big">{s.big}</div><div class="stat__label">{s.label}</div></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="container">
+      <p class="eyebrow">WHO WE ARE</p>
+      <h2 class="section__heading section__heading--white">South Rock was built from real work, not theory.</h2>
+      <p class="section__lede section__lede--light">
+        South Rock was built out of a simple problem. Water, weather, and daily use expose weak
+        surfaces quickly. In marine and waterfront settings, drainage, grip, long term durability,
+        and a clean finished look all matter, and the available options did not fully deliver.
+      </p>
+      <p class="section__lede section__lede--light">
+        So instead of settling, we built a product we would actually want to install ourselves.
+        That still shapes the company today. South Rock comes from field use, practical
+        expectations, and a clear understanding of what outdoor surfaces go through season after
+        season.
+      </p>
+      <ul class="list list--light">
+        {whoWeAreBullets.map((b) => <li>{b}</li>)}
+      </ul>
+      <h3 class="subheading">Michigan made</h3>
+      <p class="section__lede section__lede--light">
+        Proudly based in Perry, Michigan, South Rock reflects the kind of practical manufacturing
+        mindset that comes from doing the work and standing behind the result.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark">WHAT DRIVES THE BRAND</p>
+      <h2 class="section__heading">What matters here is pretty straightforward.</h2>
+      <p class="section__lede">
+        These are the ideas behind the product and the company. Simple on purpose, because the
+        best proof still comes from how it performs.
+      </p>
+      <ol class="steps">
+        {drives.map((d, i) => (
+          <li><span class="steps__num">{String(i + 1).padStart(2, '0')}</span><div><h3>{d.title}</h3><p>{d.text}</p></div></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--navy" id="our-story">
+    <div class="container">
+      <p class="eyebrow">OUR STORY</p>
+      <h2 class="section__heading section__heading--white">How South Rock took shape.</h2>
+      <p class="section__lede section__lede--light">
+        What started as an idea at a family cottage has grown into a company that brings 40 years
+        of manufacturing experience and hands on expertise to every panel we produce.
+      </p>
+      <ol class="steps steps--light">
+        {storySteps.map((s, i) => (
+          <li><span class="steps__num">Step {String(i + 1).padStart(2, '0')}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section defines">
+    <div class="container defines__grid">
+      <blockquote class="defines__quote">
+        We built South Rock because we wanted a product we would be proud to install, every day,
+        in the kind of conditions that expose shortcuts fast.
+      </blockquote>
+      <p class="section__lede">
+        That is still the heart of the story. South Rock was built from practical standards, real
+        use, and a refusal to settle for surfaces that could not hold up.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--navy next-step">
+    <div class="container next-step__inner">
+      <div>
+        <h2 class="section__heading section__heading--white">Want samples, specs, or a conversation?</h2>
+        <p class="section__lede section__lede--light">
+          Tell us about your project, ask for a sample, or reach out with questions. We are happy
+          to help you figure out fit, application, and next steps.
+        </p>
+      </div>
+      <a class="btn" href="/#contact">Request Sample</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { background: var(--navy); color: var(--white); padding-block: var(--space-xl); }
+  .hero__title { font-size: clamp(2.8rem, 5vw, 5rem); max-width: 20ch; }
+  .hero__lede { max-width: 65ch; opacity: 0.9; margin-top: var(--space-m); }
+  .hero__ctas { display: flex; gap: var(--space-s); flex-wrap: wrap; margin-top: var(--space-l); }
+  .btn--outline { background: transparent; border: 2px solid var(--white); }
+
+  .badges { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: var(--space-m); margin-top: var(--space-xl); }
+  .badge h3 { color: var(--orange); font-size: var(--text-l); margin: 0 0 0.4rem; }
+  .badge p { margin: 0; opacity: 0.85; }
+
+  .eyebrow { color: var(--orange); font-weight: 700; margin: 0 0 0.8rem; }
+  .eyebrow--dark { color: var(--orange); }
+  .section { padding-block: var(--space-xl); }
+  .section--navy { background: var(--navy); color: var(--white); }
+  .section__heading { font-size: clamp(2.2rem, 3.6vw, 3.2rem); margin-bottom: var(--space-m); }
+  .section__heading--white { color: var(--white); }
+  .section__lede { max-width: 80ch; opacity: 0.85; margin-bottom: var(--space-m); }
+  .section__lede--light { color: var(--white); opacity: 0.85; }
+  .subheading { color: var(--orange); margin-top: var(--space-l); }
+
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-m); margin-top: var(--space-l); }
+  @media (min-width: 700px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+  .stat__big { font-family: var(--font-heading); font-weight: 900; font-size: var(--text-l); color: var(--navy); }
+  .stat__label { font-size: var(--text-s); opacity: 0.7; }
+
+  .list { padding-left: 2rem; display: grid; gap: 0.6rem; max-width: 70ch; }
+  .list--light { color: var(--white); opacity: 0.9; }
+
+  .steps { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: grid; gap: var(--space-m); }
+  .steps li { display: flex; gap: var(--space-m); align-items: flex-start; }
+  .steps__num {
+    flex: none; min-width: 4.4rem;
+    font-weight: 900; font-family: var(--font-heading);
+    color: var(--orange);
+  }
+  .steps h3 { margin: 0 0 0.4rem; }
+  .steps--light h3 { color: var(--white); }
+  .steps:not(.steps--light) h3 { color: var(--navy); }
+  .steps p { margin: 0; opacity: 0.85; max-width: 70ch; }
+  .steps--light p { color: var(--white); }
+
+  .defines__grid { display: grid; gap: var(--space-l); }
+  @media (min-width: 900px) { .defines__grid { grid-template-columns: 1.2fr 1fr; } }
+  .defines__quote { font-size: clamp(2rem, 3vw, 2.8rem); font-family: var(--font-heading); font-weight: 700; margin: 0; color: var(--navy); }
+
+  .next-step__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-m); }
+</style>
