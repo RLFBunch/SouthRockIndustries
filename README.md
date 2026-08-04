@@ -1,25 +1,30 @@
 # South Rock Ind. — site scaffold
 
-This is a fresh, **separate** repo/project — not connected to the Feighner Boat Lifts &
-Docks site or account in any way (separate GitHub repo, separate Cloudflare Pages/Workers
-project, separate domain, separate secrets). It reuses the same proven stack (Astro static
-site + Cloudflare Worker + Pages-style Functions for forms) because that setup worked well
-on the Feighner rebuild, but none of the actual content, branding, or data is shared.
+Domain: **southrockind.com**. This is a fresh, **separate** repo/project — separate GitHub
+repo, separate Cloudflare Pages/Workers project, separate domain, separate secrets from the
+Feighner Boat Lifts & Docks site, per the owner's request that it stand on its own even
+though the business is Feighner-owned. It reuses the same proven stack (Astro static site +
+Cloudflare Worker + Pages-style Functions for forms) because that setup worked well on the
+Feighner rebuild.
+
+**Confirmed:** "South Rock" is the maintenance-free decking material also listed on the
+Feighner site's dock pages (Beige/Grey options) — this is that same real product line/brand,
+owned by Feighner, getting its own standalone site. Not an unrelated coincidence.
 
 ## Status: bare scaffold, not a real site yet
-Nothing in here is real content. Before this goes live, the following need answers:
+Nothing in here is real content yet. Open questions before this becomes a real site:
 
-1. **Exact domain** — is it `soutrockind.com` or `southrockind.com`? `astro.config.mjs`
-   currently has a placeholder (`example-south-rock-ind.com`) until this is confirmed.
-2. **What the business does** — no content has been written because none of the business's
-   actual products/services/copy have been provided yet.
-3. **Branding** — `src/styles/tokens.css` has placeholder colors/fonts (a generic blue
-   accent, system fonts). Replace with the real logo, brand colors, and fonts once supplied.
-4. **Relationship to Feighner Boat Lifts & Docks** — "South Rock" is also the name of one of
-   Feighner's maintenance-free decking materials. Worth confirming whether this is a genuinely
-   unrelated business or connected in some way (e.g. a decking supplier), since that would
-   change whether anything should cross-reference the other site.
-5. **Forms/contact** — recipient email + any form fields needed; nothing is wired up yet
+1. **Branding** — same visual identity as Feighner (blue `#005288` / orange `#f4661d`,
+   Outfit font — see the main repo's `docs/DESIGN-TOKENS.md`) since it's owned by the same
+   company, or a distinct look for the South Rock brand? `src/styles/tokens.css` currently
+   has generic placeholder colors/fonts either way.
+2. **What the site should cover** — is this a small brand/marketing site for the decking
+   material (specs, color options, "used by Feighner docks"), or does South Rock Ind. sell/
+   ship decking directly or wholesale to other dock manufacturers too? Determines whether
+   this needs a product catalog, dealer/wholesale inquiry form, etc., or just a few pages.
+3. **Contact/location** — same Charlotte/Perry/Gwinn locations and phone as Feighner, or
+   separate contact info for South Rock Ind.?
+4. **Forms** — recipient email + fields once the above is settled; nothing wired up yet
    (`worker/index.ts` has no routes registered).
 
 ## Structure
